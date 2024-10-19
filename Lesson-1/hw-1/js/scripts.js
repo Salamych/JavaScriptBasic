@@ -16,21 +16,28 @@ window.addEventListener('load', function(){
 		
 
 	btn.addEventListener('click', function(){
+		let num1 = parseInt(inp1.value);
+		let num2 = parseInt(inp2.value);
+		let resOp;
+
 		switch(operator.value){
-			case '+': res.innerHTML =  parseInt(inp1.value) + parseInt(inp2.value);
+			case '+': resOp = num1 + num2;
 			break;
-			case '-': res.innerHTML = parseInt(inp1.value) - parseInt(inp2.value);
+			case '-': resOp = num1 - num2;
 			break;
-			case '*': res.innerHTML = parseInt(inp1.value) * parseInt(inp2.value);
+			case '*': resOp = num1 * num2;
 			break;
-			case '/': res.innerHTML = parseInt(inp1.value) / parseInt(inp2.value);
+			case '/': resOp = num1 / num2;
 			break;
 		}
+
+		res.innerHTML = resOp;
+		
 		this.disabled = true;
 	});
 
 	function getInpValue(){
-		this.value = this.value.match(/[-+]?\d+/);
+		this.value = this.value.replace(/[^0-9]/g, '');
 		btn.disabled = false;
 	}
 
