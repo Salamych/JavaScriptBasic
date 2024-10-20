@@ -1,15 +1,18 @@
 window.addEventListener('load', function(){
 
   let patterns ={
-    notEmpty: /.+/,
-    phone: /^\d{7,14}$/,
-    email: /^.+@.+\..+$/,
-  };
-
-  let errorMsg = {
-    notEmpty: 'Хоты бы один символ',
-    phone: 'Только цифры, количество цифр от 7 до 14',
-    email: 'Email вида sometext@mail.ru'
+    notEmpty: { 
+      reg: /.+/,
+      msg: 'Хотя бы один символ'
+    },
+    phone: {
+      reg: /^\d{7,14}$/,
+      msg: 'Только цифры, количество цифр от 7 до 14'
+    },
+    email: {
+      reg: /^.+@.+\..+$/,
+      msg: 'Email вида sometext@mail.ru'
+    }
   };
 
   let form = document.querySelector('.form');
@@ -20,8 +23,8 @@ window.addEventListener('load', function(){
     let err = false;
     errorList.innerHTML = '';
     checkInps.forEach(el => {
-      let pattern = patterns[el.dataset.valid];
-      let msg = errorMsg[el.dataset.valid];
+      let pattern = patterns[el.dataset.valid].reg;
+      let msg = patterns[el.dataset.valid].msg;
       el.value = el.value.trim(); 
 
       if(!pattern.test(el.value)){
