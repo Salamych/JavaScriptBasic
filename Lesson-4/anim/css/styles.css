@@ -1,0 +1,41 @@
+html, body{
+	margin: 0;
+	background: #eee;
+}
+
+.faq{
+	padding: 30px;
+	max-width: 600px;
+	overflow: hidden;
+}
+
+.faq .item{
+	margin: 20px 0;
+}
+
+.faq .item .ask{
+	font-size: 30px;
+	margin-bottom: 10px;
+	cursor: pointer;
+}
+
+.faq .item .answer{
+	background: #ff0;
+	overflow: hidden;
+	padding: 0 15px;
+	height: 0;
+	animation: answerDown 0.5s forwards;
+}
+
+.faq .item:hover .answer{
+	animation: answerUp 0.5s forwards;
+}
+
+@keyframes answerDown {
+	from{height: 300px;}
+	to{height: 0;}
+}
+@keyframes answerUp {
+	from{height: 0;}
+	to{height: 300px;}
+}
