@@ -11,12 +11,12 @@ window.addEventListener('load', function(){
 	function toogleItem(ask){
 		
 		let answer = ask.nextElementSibling; // ask.parentNode.querySelector('.asnwer')
-		let inlineStyle = answer.style;
 
-	
+	  if(answer.jsAnimated === true){
+			return;
+		} 
+
 		if(answer.classList.contains('open')){
-			inlineStyle.height = answer.clientHeight + 'px';
-
 			let animate = answer.animate([
 				{height: answer.clientHeight + 'px'},
 				{height: '0px'}
@@ -24,13 +24,15 @@ window.addEventListener('load', function(){
 			{duration: 500}
 			);
 
+			answer.jsAnimated = true;
 			animate.addEventListener('finish', function(){
-				inlineStyle.height = '';
 				answer.classList.remove('open');
+				answer.jsAnimated = false;
 			});
 		}
 		else{
 			answer.classList.add('open');
+			answer.jsAnimated = true;
 
 			let animate = answer.animate([
 				{height: '0px'},
@@ -40,9 +42,8 @@ window.addEventListener('load', function(){
 			);
 
 			animate.addEventListener('finish', function(){
-				inlineStyle.height = '';
+				answer.jsAnimated = false;
 			});
-			
 		}
 	 }
 
