@@ -58,35 +58,42 @@ class Timer{
 }
 
 class TimerFormat extends Timer{
-	render(){
+	splitTime(){
 		let h = parseInt(this.time / 3600);
 		let hs = this.time % 3600;
 		let m = parseInt(hs /  60);
 		let s = hs % 60;
-		this.box.innerHTML = `${h}:${m}:${s}`;
-		return {
-			hour: h, 
-			minut: m, 
-			seconds: s
-		};
+
+		return {h, m, s};
+	}
+	
+	render(){
+		let tp = this.splitTime();
+		this.box.innerHTML = `${tp.h}:${tp.m}:${tp.s}`;
 	}
 }
 
 class NiceTimer extends TimerFormat {
-	constructor(selector, time, cb){
+	constructor(selector, time, onStop = null){
 		super(selector, time);
-		if(this.time <= 0){
-			cb();
-		}
+		this.onStop = onStop;
 	}
 	render(){
-		let timer = super.render();	
-		let hName = this.getHourPostfix('час', timer.hour); 
-		let mName = this.getMinuttSecondPostfix('минут', timer.minut); 
-		let sName = this.getMinuttSecondPostfix('секунд', timer.seconds);
+		let tp = this.splitTime();	
+		let hName = this.getHourPostfix('час', tp.h); 
+		let mName = this.getMinuttSecondPostfix('минут', tp.m); 
+		let sName = this.getMinuttSecondPostfix('секунд', tp.s);
 
-		this.box.innerHTML = `${timer.hour} ${hName}: ${timer.minut} ${mName}: ${timer.seconds} ${sName}`;
+		this.box.innerHTML = `${tp.h} ${hName}: ${tp.m} ${mName}: ${tp.s} ${sName}`;
 		
+	}
+
+	stop(){
+		super.stop();
+
+		if(this.onStop !== null){
+			this.onStop();
+		}
 	}
 
 	getHourPostfix(root, n){

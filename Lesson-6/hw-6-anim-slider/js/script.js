@@ -23,7 +23,7 @@ class Slider{
 			this.i = this.i > 0 ? this.i - 1 : this.images.length - 1;
 			this.toggleSlides(imgHide, this.images[this.i], false);
 		}
-		}
+	}
 	
 	next(){
 		if(!this.animated){
