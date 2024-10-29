@@ -15,6 +15,6 @@ $(function(){
 				items:5
 			}
 		}
-	});
+	}).trigger('refresh.owl.carousel');
 
 });

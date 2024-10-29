@@ -76,7 +76,5 @@ class Slider{
 			showImg.classList.add('showed');	
 			this.animated = false;
 		});
-	}
+	}	
 }
-
-
