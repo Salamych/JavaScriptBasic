@@ -11,7 +11,9 @@ const app = {
 
   imagemin: {verbose: true},
 
-  fonter: {formats: ["ttf", "woff", "eot", "svg"]}
+  fonter: {formats: ["ttf", "woff", "eot", "svg"]},
+
+  svgSprite: {mode: {stack: {sprite: "../sprite.svg"}},}
 
 }
 

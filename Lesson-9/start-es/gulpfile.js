@@ -10,6 +10,7 @@ import {scss} from './tasks/scss.js';
 import {js} from './tasks/js.js';
 import {img} from './tasks/img.js';
 import {font} from './tasks/font.js';
+import {svg} from './tasks/svg.js';
 
 
 const watcher = () => {
@@ -18,6 +19,7 @@ const watcher = () => {
   gulp.watch(path.js.watch, js).on("all", browserSync.reload);
   gulp.watch(path.img.watch, img).on("all", browserSync.reload);
   gulp.watch(path.font.watch, font).on("all", browserSync.reload);
+  gulp.watch(path.svg.watch, svg).on("all", browserSync.reload);
 }
 
 const server = () => {
@@ -30,7 +32,7 @@ const server = () => {
 
 const build = gulp.series(
   clear,
-  gulp.parallel(html, scss, js, img, font)
+  gulp.parallel(html, scss, js, img, font, svg)
 );
 
 const dev = gulp.series(
@@ -47,5 +49,6 @@ export {js};
 export {img};
 export {html};
 export {font};
+export {svg};
 
 export default def;

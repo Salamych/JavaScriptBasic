@@ -39,6 +39,12 @@ const path = {
     watch: pathSrc + '/img/**/*.{png,jpg,gpeg,gif,svg}',
     dest: pathDest + '/img'
   },
+  
+  svg: {
+    src: pathSrc + '/img/svg/*.svg',
+    watch: pathSrc + '/img/svg/**/*.svg',
+    dest: pathDest + '/img/svg'
+  },
 
   font: {
     src: pathSrc + '/font/*.{eot,ttf,otf,otc,ttc,woff,woff2,svg}',
