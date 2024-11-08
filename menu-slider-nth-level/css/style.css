@@ -1,0 +1,49 @@
+*{
+  box-sizing: border-box;
+}
+html, body{
+  margin: 0;
+  padding: 0;
+}
+
+ul{
+  padding: 0;
+}
+
+.container{
+  max-width: 1100px;
+  padding: 30px;
+  margin: 0 auto;
+}
+
+.root-nav{
+  width: 150px;
+}
+
+.root-nav li{
+  list-style-type: none;
+  background-color: #574f4f;
+  padding-left: 0;
+  position: relative;
+}
+
+.root-nav a,
+.root-nav span{
+  cursor: pointer;
+  text-decoration: none;
+  color: #eee;
+  display: block;
+  padding: 5px 10px;
+}
+
+.root-nav ul{
+  display: none;
+  position: absolute;
+  right: -150px;
+  top: 0;
+  width: 150px;
+}
+
+ul.sub-menu-active{
+  display: block;
+}

@@ -1,0 +1,45 @@
+html, body {
+  margin: 0;
+}
+body{
+  position: relative;
+}
+
+.container{
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 30px;
+}
+
+.overlay{
+  display: none;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #ccc;
+  opacity: 0.8;
+}
+
+.popup{
+  display: none;
+  position: fixed;
+  width: 500px;
+  height: 300px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  opacity: 1;
+}
+
+.close-letter{
+  display: flex;
+  justify-content: end;
+  margin-right: 5px;
+}
+
+
+.active{
+  display: block;
+}

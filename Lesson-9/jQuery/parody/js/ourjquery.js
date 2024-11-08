@@ -1,6 +1,14 @@
 
 function $(selector){
-  let elements = document.querySelectorAll(selector);
+
+  let elements;
+
+  if(selector instanceof HTMLElement){
+    elements = [selector];
+  }
+  else { 
+    elements = document.querySelectorAll(selector);
+  }
 
   return new OurJquery(elements);
 }
@@ -36,4 +44,34 @@ function OurJquery(elements){
     }
     return this;
   }
+
+  this.fade = function(time, callback){
+    
+    let func = callback || function(){};
+
+    for(let i = 0; i < this.elements.length; i++){
+      tehFade(this.elements[i], time, 50, func);
+    }
+    return this;
+  }
+}
+
+function tehFade(elem, t, f, callback){
+  let fps = f || 50;
+  let time = t || 500;
+  let steps = time/(1000/fps);
+  let op = 1;
+  let dO = op/steps;
+
+  let timer = setInterval(function(){
+    op -= dO;
+    elem.style.opacity = op;
+    steps--;
+
+    if(steps <= 0){
+      clearInterval(timer);
+      elem.style.display = 'none';
+      callback.call(elem);
+    }
+  },(1000/fps));
 }

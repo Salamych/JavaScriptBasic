@@ -58,8 +58,12 @@ window.onload = function(e){
 
       jqInputs.addClass('some').addClass('some1').addClass('some2');
 
-      $('.items .item').html('1').addClass('nz').on('click', function(){
-        this.style.color = 'red';
+      $('.items .item').on('click', function(){
+        $(this).fade(1000, function(){
+          this.style.opacity = 1;
+          this.style.display = 'block';
+          $(this).html('536');
+        });
       });
 
    
