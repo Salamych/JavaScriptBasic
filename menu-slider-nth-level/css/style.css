@@ -47,3 +47,7 @@ ul{
 ul.sub-menu-active{
   display: block;
 }
+
+span.sub-menu-active-span{
+  background-color: #f03861;
+}
